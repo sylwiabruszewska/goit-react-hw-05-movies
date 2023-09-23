@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { MovieList, Loader } from 'components';
 import { getMoviesByQuery } from 'services/api';
+import { useSearchParams } from 'react-router-dom';
 
 import {
   SearchForm,
@@ -11,19 +12,20 @@ import {
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
-  const [query, setQuery] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get('query');
 
   const onSubmit = event => {
     event.preventDefault();
-    const form = event.target;
-    const query = form.elements.query.value;
-    setQuery(query);
+    const form = event.currentTarget;
+    const searchQuery = form.elements.query.value;
+    setSearchParams({ query: searchQuery });
     form.reset();
   };
 
   useEffect(() => {
-    getMoviesByQuery(query)
+    getMoviesByQuery(searchQuery)
       .then(movies => {
         setMovies(movies);
       })
@@ -33,7 +35,7 @@ const Movies = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [query]);
+  }, [searchQuery]);
 
   if (isLoading) {
     return <Loader />;

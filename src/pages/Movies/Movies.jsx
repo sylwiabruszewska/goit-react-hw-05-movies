@@ -12,7 +12,7 @@ import {
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('query');
 
@@ -25,16 +25,16 @@ const Movies = () => {
   };
 
   useEffect(() => {
-    getMoviesByQuery(searchQuery)
-      .then(movies => {
-        setMovies(movies);
-      })
-      .catch(error => {
-        console.error('Błąd podczas pobierania danych filmu:', error);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    if (searchQuery) {
+      setIsLoading(true);
+      getMoviesByQuery(searchQuery)
+        .then(movies => {
+          setMovies(movies);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    }
   }, [searchQuery]);
 
   if (isLoading) {

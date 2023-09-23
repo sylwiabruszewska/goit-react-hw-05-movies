@@ -8,6 +8,10 @@ export const SearchForm = styled.form`
   background-color: #fff;
   border-radius: 10px;
   overflow: hidden;
+
+  &:focus-within {
+    outline: 2px solid #235784;
+  }
 `;
 
 export const SearchInput = styled.input`
@@ -39,6 +43,10 @@ export const SearchButton = styled.button`
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   outline: none;
+
+  &:hover {
+    background-color: #0092ca;
+  }
 `;
 
 export const SearchBar = styled.div`

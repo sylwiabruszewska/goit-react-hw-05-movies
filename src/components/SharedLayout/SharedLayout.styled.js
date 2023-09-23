@@ -21,6 +21,10 @@ export const StyledLink = styled(NavLink)`
     border-radius: 10px;
     color: #8dc6ff;
   }
+
+  &:hover {
+    color: #8dc6ff;
+  }
 `;
 
 export const StyledLogo = styled(Link)`

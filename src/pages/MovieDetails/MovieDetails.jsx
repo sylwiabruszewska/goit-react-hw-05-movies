@@ -11,6 +11,7 @@ import {
   MovieInfo,
   MovieBox,
   MovieOverview,
+  MovieOverviewText,
   MovieNav,
   MovieNavItem,
   MovieNavLink,
@@ -73,7 +74,7 @@ const MovieDetails = () => {
             </MovieBox>
 
             <MovieOverview>Overview</MovieOverview>
-            <p>{overview}</p>
+            <MovieOverviewText>{overview}</MovieOverviewText>
           </div>
         </div>
       </MovieCardWrapper>

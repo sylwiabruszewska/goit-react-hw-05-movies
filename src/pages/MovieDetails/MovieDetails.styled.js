@@ -39,6 +39,10 @@ export const MovieOverview = styled.h3`
   margin: 40px 0 10px;
 `;
 
+export const MovieOverviewText = styled.p`
+  width: 50%;
+`;
+
 export const MovieNav = styled.ul`
   list-style-type: none;
   display: flex;

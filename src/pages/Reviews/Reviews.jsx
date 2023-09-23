@@ -40,17 +40,14 @@ const Reviews = () => {
           {reviews.map(({ author, author_details, id, content }) => (
             <ReviewsListItem key={id}>
               <UserInfoWrapper>
-                {author_details['avatar_path'] ? (
-                  <UserAvatar
-                    src={author_details['avatar_path']}
-                    alt="{author}'s avatar"
-                  />
-                ) : (
-                  <UserAvatar
-                    src={avatarPlaceholder}
-                    alt="Avatar placeholder"
-                  />
-                )}
+                <UserAvatar
+                  src={author_details['avatar_path'] || avatarPlaceholder}
+                  alt={
+                    author_details['avatar_path']
+                      ? "{author}'s avatar"
+                      : 'Placeholder'
+                  }
+                />
                 <UserInfo>@{author_details['username']}</UserInfo>
                 <UserInfo>{author}</UserInfo>
               </UserInfoWrapper>

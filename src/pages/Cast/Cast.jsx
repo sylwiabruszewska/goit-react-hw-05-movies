@@ -37,12 +37,10 @@ const Cast = () => {
       <CastList>
         {cast.map(({ name, character, id, profile_path }) => (
           <CastListItem key={id}>
-            {profile_path ? (
-              <CastPhoto src={profile_path} alt={name} />
-            ) : (
-              <CastPhoto src={placeholder} alt="Placeholder" />
-            )}
-
+            <CastPhoto
+              src={profile_path || placeholder}
+              alt={profile_path ? name : 'Placeholder'}
+            />
             <CastInfo>
               <CastInfoName>{name}</CastInfoName>
               <CastInfoChar>{character}</CastInfoChar>

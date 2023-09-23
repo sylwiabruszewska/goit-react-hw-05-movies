@@ -4,6 +4,7 @@ import { useParams, useLocation, Outlet } from 'react-router-dom';
 import { getMovieDetails } from 'services/api';
 import { HiArrowLeft } from 'react-icons/hi';
 import { Loader } from 'components';
+import noPoster from 'images/no-poster-available.jpg';
 
 import {
   MovieCardWrapper,
@@ -60,7 +61,10 @@ const MovieDetails = () => {
       </BackLink>
       <MovieCardWrapper>
         <div>
-          <MoviePoster src={poster_path} alt={title} />
+          <MoviePoster
+            src={poster_path || noPoster}
+            alt={poster_path ? title : 'Placeholder'}
+          />
         </div>
         <div>
           <h2>
